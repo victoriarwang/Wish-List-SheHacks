@@ -84,14 +84,6 @@ const wishStyles = StyleSheet.create({
     width: 90,
     height: 90
   },
-  addIcon: {
-    position: "absolute",
-    top: 0,
-    left: 110,
-    zIndex: 100,
-    width: 50,
-    height: 50
-  },
   wishes: {
     width: "87%",
     flex: 1, 
@@ -143,6 +135,30 @@ const wishStyles = StyleSheet.create({
   smallTxt: {
     marginTop: 7,
     fontSize: 10
+  },
+  btmContainer: {
+    width: "102%",
+    height: 90,
+    position: 'absolute',
+    bottom: 0,
+    flex: 1, 
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F6F6F6",
+    borderColor: "#43484d",
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 3, 
+  },
+  divider: {
+    borderWidth: 1,
+  },
+  addIcon: {
+    width: 100,
+    height: 100,
+    marginLeft: 10,
+    marginRight: 10
   }
 });
 
@@ -206,6 +222,21 @@ function WishListScreen() {
           </View>
           <Text style={wishStyles.smallTxt}>$5/$10 saved</Text>
         </Card>
+
+        <Card containerStyle={wishStyles.wishOuter} wrapperStyle={wishStyles.wishInner}>
+          <Card.Image source={require('./assets/pizza.png')} style={wishStyles.icons}></Card.Image>
+          <Card.Title style={wishStyles.wishTitle}>Pizza Delivery</Card.Title>
+          <View style={wishStyles.progressBar}>
+            <View style={wishStyles.bar}></View>
+            <Text style={wishStyles.barTxt}>50%</Text>
+          </View>
+          <Text style={wishStyles.smallTxt}>$7/$14 saved</Text>
+        </Card>
+      </View>
+
+      <View style={wishStyles.btmContainer}>
+        <Image source={require('./assets/bank-icon.png')} style={wishStyles.addIcon}/>
+        <Image source={require('./assets/wish-icon.png')} style={wishStyles.addIcon}/>
       </View>
     </View>
   );
@@ -284,8 +315,8 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         {/* made wishlist home screen for ease of use */}
-        <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="WishList" component={WishListScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Tasks" component={TasksScreen} />
         <Stack.Screen name="Donate" component={DonateScreen} />
       </Stack.Navigator>
