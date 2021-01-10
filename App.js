@@ -84,6 +84,14 @@ const wishStyles = StyleSheet.create({
     width: 90,
     height: 90
   },
+  addIcon: {
+    position: "absolute",
+    top: 0,
+    left: 110,
+    zIndex: 100,
+    width: 50,
+    height: 50
+  },
   wishes: {
     width: "87%",
     flex: 1, 
@@ -205,7 +213,6 @@ function WishListScreen() {
 
 function TasksScreen() {
   return (
-
     
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start' }}>
 
@@ -277,8 +284,8 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         {/* made wishlist home screen for ease of use */}
-        <Stack.Screen name="WishList" component={WishListScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="WishList" component={WishListScreen} />
         <Stack.Screen name="Tasks" component={TasksScreen} />
         <Stack.Screen name="Donate" component={DonateScreen} />
       </Stack.Navigator>
