@@ -43,7 +43,7 @@ function TasksScreen() {
       <Text style={{fontSize: 25, fontWeight: 'bold'}}>{"\n"}Available Tasks</Text>
 
       <ScrollView horizontal={true} style={{flex: 0.1}}> 
-      <TouchableOpacity onPress={() => Alert.alert('Sweep the floor: $5')}>
+      <TouchableOpacity onPress={() => Alert.alert('Sweep the floor','$5')}>
       <Image style={styles.tinyLogo} source={require('./Images/sweep.png')} /> 
       </TouchableOpacity>
       <TouchableOpacity onPress={() => Alert.alert('Wash the dishes: $8')}>
@@ -54,6 +54,7 @@ function TasksScreen() {
       </TouchableOpacity>
       </ScrollView> 
       
+      
       <TouchableOpacity
       style={styles.buttonRequestTask}
       activeOpacity={0.5}>
@@ -63,11 +64,13 @@ function TasksScreen() {
         <View style={styles.buttonRequestIconSeparatorStyle} />
         <Text style={styles.buttonRequestTextStyle}>COMPLETED TASKS</Text>
       </TouchableOpacity>
+      
 
       <View style={{flex: 0.1}}/>
       <TouchableOpacity
       style={styles.buttonRequestTask}
-      activeOpacity={0.5}>
+      activeOpacity={0.5}
+      onPress={() => Alert.alert('A message has sent to your parents.')}>
         <Image source={require('./Images/notify.png')}
         style={styles.buttonRequestImageIconStyle}
         />
