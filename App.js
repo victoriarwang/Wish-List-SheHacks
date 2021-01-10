@@ -34,26 +34,68 @@ function WishListScreen() {
   );
 }
 
+const sweepTwoButtonRequest = () =>
+Alert.alert(
+  "Sweep the floor",
+  "Reward: $5",
+  [
+    {
+      text: "Decline",
+      onPress: () => console.log("Decline Request"),
+      style: "decline"
+    },
+    { text: "Accept", onPress: () => console.log("Accept Request") }
+  ],
+  { cancelable: false }
+);
+
+const dishesTwoButtonRequest = () =>
+Alert.alert(
+  "Wash the dishes",
+  "Reward: $8",
+  [
+    {
+      text: "Decline",
+      onPress: () => console.log("Decline Request"),
+      style: "decline"
+    },
+    { text: "Accept", onPress: () => console.log("Accept Request") }
+  ],
+  { cancelable: false }
+);
+
+const laundryTwoButtonRequest = () =>
+Alert.alert(
+  "Put the laundry away",
+  "Reward: $10",
+  [
+    {
+      text: "Decline",
+      onPress: () => console.log("Decline Request"),
+      style: "decline"
+    },
+    { text: "Accept", onPress: () => console.log("Accept Request") }
+  ],
+  { cancelable: false }
+);
+
 function TasksScreen() {
   return (
-
-    
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start' }}>
 
       <Text style={{fontSize: 25, fontWeight: 'bold'}}>{"\n"}Available Tasks</Text>
 
       <ScrollView horizontal={true} style={{flex: 0.1}}> 
-      <TouchableOpacity onPress={() => Alert.alert('Sweep the floor','$5')}>
+      <TouchableOpacity onPress={sweepTwoButtonRequest}>
       <Image style={styles.tinyLogo} source={require('./Images/sweep.png')} /> 
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => Alert.alert('Wash the dishes: $8')}>
+      <TouchableOpacity onPress={dishesTwoButtonRequest}>
       <Image style={styles.tinyLogo} source={require('./Images/dishes.png')} /> 
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => Alert.alert('Put the laundry away: $10')}>
+      <TouchableOpacity onPress={laundryTwoButtonRequest}>
       <Image style={styles.tinyLogo} source={require('./Images/laundry.png')} /> 
       </TouchableOpacity>
       </ScrollView> 
-      
       
       <TouchableOpacity
       style={styles.buttonRequestTask}
@@ -70,7 +112,7 @@ function TasksScreen() {
       <TouchableOpacity
       style={styles.buttonRequestTask}
       activeOpacity={0.5}
-      onPress={() => Alert.alert('A message has sent to your parents.')}>
+      onPress={() => Alert.alert('Message Sent.', 'Your parents will post new tasks for you soon.')}>
         <Image source={require('./Images/notify.png')}
         style={styles.buttonRequestImageIconStyle}
         />
