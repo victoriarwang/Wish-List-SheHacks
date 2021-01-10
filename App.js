@@ -83,6 +83,9 @@ const styles = StyleSheet.create({
     margin: 5,
     marginTop: -60,
   },
+  button2: {
+    marginTop: -40
+  },
   buttonImageIconStyle: {
     padding: 20,
     margin: 10,
@@ -472,6 +475,20 @@ function HomeScreen({ navigation }) {
 
           <Image
             source={require('./assets/wishlist.png')}
+            style={styles.buttonImageIconStyle}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Tasks')}
+          style={[styles.button, styles.button2]}
+          activeOpacity={0.5}>
+
+          <Text style={styles.buttonTextStyle}>
+            Tasks
+          </Text>
+          <View style={styles.buttonIconSeparatorStyle} />
+
+          <Image
+            source={require('./assets/save.png')}
             style={styles.buttonImageIconStyle}
           />
         </TouchableOpacity>
