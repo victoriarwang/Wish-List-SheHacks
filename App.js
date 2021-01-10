@@ -29,7 +29,8 @@ const wishStyles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: 40
+    marginTop: 40,
+    marginBottom: 20
   },
   title: {
     fontSize: 40
@@ -43,15 +44,24 @@ const wishStyles = StyleSheet.create({
     height: 90
   },
   wishes: {
-    // alignItems:
+    width: "87%",
+    flex: 1, 
+    flexDirection: "row",
+    justifyContent: "space-between",
+    flexWrap: "wrap"
   },
   wishOuter: {
     width: 150,
+    height: 220,
     borderRadius: 5,
     shadowColor: "#000",
     shadowOpacity: 0.2,
     shadowRadius: 3, 
-    alignItems: "center"
+    alignItems: "center",
+    marginLeft: 5,
+    marginRight: 5,
+    marginBottom: 15,
+    marginTop: 0
   },
   wishInner: {
     alignItems: "center"
@@ -80,6 +90,10 @@ const wishStyles = StyleSheet.create({
   },
   barTxt: {
     zIndex: 99
+  },
+  smallTxt: {
+    marginTop: 7,
+    fontSize: 10
   }
 });
 
@@ -112,15 +126,36 @@ function WishListScreen() {
         <Text style={wishStyles.title}>Wish List</Text>
         <Image source={require('./assets/magic-wand.png')} style={wishStyles.icon}/>
       </View>
+
       <View style={wishStyles.wishes}>
         <Card containerStyle={wishStyles.wishOuter} wrapperStyle={wishStyles.wishInner}>
           <Card.Image source={require('./assets/game-console.png')} style={wishStyles.icons}></Card.Image>
-          <Card.Divider/>
           <Card.Title style={wishStyles.wishTitle}>Animal Crossing</Card.Title>
           <View style={wishStyles.progressBar}>
             <View style={wishStyles.bar}></View>
             <Text style={wishStyles.barTxt}>50%</Text>
           </View>
+          <Text style={wishStyles.smallTxt}>$45/$90 saved</Text>
+        </Card>
+
+        <Card containerStyle={wishStyles.wishOuter} wrapperStyle={wishStyles.wishInner}>
+          <Card.Image source={require('./assets/sneakers.png')} style={wishStyles.icons}></Card.Image>
+          <Card.Title style={wishStyles.wishTitle}>New Sneakers</Card.Title>
+          <View style={wishStyles.progressBar}>
+            <View style={wishStyles.bar}></View>
+            <Text style={wishStyles.barTxt}>50%</Text>
+          </View>
+          <Text style={wishStyles.smallTxt}>$50/$100 saved</Text>
+        </Card>
+
+        <Card containerStyle={wishStyles.wishOuter} wrapperStyle={wishStyles.wishInner}>
+          <Card.Image source={require('./assets/movie.png')} style={wishStyles.icons}></Card.Image>
+          <Card.Title style={wishStyles.wishTitle}>Movie Ticket</Card.Title>
+          <View style={wishStyles.progressBar}>
+            <View style={wishStyles.bar}></View>
+            <Text style={wishStyles.barTxt}>50%</Text>
+          </View>
+          <Text style={wishStyles.smallTxt}>$5/$10 saved</Text>
         </Card>
       </View>
     </View>
