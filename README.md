@@ -29,3 +29,6 @@ Icons made by Freepik from www.flaticon.com
 
 https://www.flaticon.com/free-icon/pizza_1404945?term=pizza&page=1&position=1&related_item_id=1404945
 Icons made by Freepik from www.flaticon.com
+
+https://www.flaticon.com/free-icon/piggy-bank_584011?related_item_id=584093&term=money
+Icons made by Freepik from www.flaticon.com

@@ -1,8 +1,8 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, Image, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Button, Alert, Image, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Card } from 'react-native-elements';
+import { Card, Overlay } from 'react-native-elements';
 
 const styles = StyleSheet.create({
   button: {
@@ -68,7 +68,7 @@ const wishStyles = StyleSheet.create({
   },
   header: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
     marginTop: 15,
     marginBottom: 20
@@ -153,14 +153,33 @@ const wishStyles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 3, 
   },
-  divider: {
-    borderWidth: 1,
-  },
   addIcon: {
     width: 100,
     height: 100,
-    marginLeft: 10,
-    marginRight: 10
+  },
+  addOverlay: {
+    width: 230,
+    height: 230,
+    alignItems: "center"
+  },
+  save: {
+    marginRight: 5
+  },
+  input: {
+    marginTop: 25,
+    marginBottom: 25,
+    fontSize: 30
+  },
+  saveBtn: {
+    width: 70,
+    height: 30,
+    borderRadius: 15,
+    backgroundColor: "#ffc23f",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  saveTxt: {
+    fontSize: 20
   }
 });
 
@@ -184,6 +203,12 @@ function HomeScreen({ navigation }) {
 
 // wish list code
 function WishListScreen() {
+  const [visible, setVisible] = useState(false);
+  const [value, onChangeText] = React.useState('Amount');
+
+  const toggleOverlay = () => {
+    setVisible(!visible);
+  };
 
   return (
     <View style={wishStyles.container}>
@@ -192,56 +217,70 @@ function WishListScreen() {
         <Image source={require('./assets/magic-wand.png')} style={wishStyles.icon}/>
       </View>
 
-        <View style={wishStyles.wishes}>
-          {/* <Wish saved="10" total="90" img="./assets/game-console.png"></Wish> */}
-          <TouchableOpacity>
-            <Card containerStyle={wishStyles.wishOuter} wrapperStyle={wishStyles.wishInner}>
-              <Card.Image source={require('./assets/game-console.png')} style={wishStyles.icons}></Card.Image>
-              <Card.Title style={wishStyles.wishTitle}>Animal Crossing</Card.Title>
-              <View style={wishStyles.progressBar}>
-                <View style={[wishStyles.bar, {width: "22%"}]}></View>
-                <Text style={wishStyles.barTxt}>22%</Text>
-              </View>
-              <Text style={wishStyles.smallTxt}>$20/$90 saved</Text>
-            </Card>
-          </TouchableOpacity>
-
-          <TouchableOpacity>
-            <Card containerStyle={wishStyles.wishOuter} wrapperStyle={wishStyles.wishInner}>
-              <Card.Image source={require('./assets/sneakers.png')} style={wishStyles.icons}></Card.Image>
-              <Card.Title style={wishStyles.wishTitle}>New Sneakers</Card.Title>
-              <View style={wishStyles.progressBar}>
-                <View style={[wishStyles.bar, {width: "35%"}]}></View>
-                <Text style={wishStyles.barTxt}>35%</Text>
-              </View>
-              <Text style={wishStyles.smallTxt}>$35/$100 saved</Text>
-            </Card>
-          </TouchableOpacity>
-
-          <TouchableOpacity>
-            <Card containerStyle={wishStyles.wishOuter} wrapperStyle={wishStyles.wishInner}>
-              <Card.Image source={require('./assets/movie.png')} style={wishStyles.icons}></Card.Image>
-              <Card.Title style={wishStyles.wishTitle}>Movie Ticket</Card.Title>
-              <View style={wishStyles.progressBar}>
-                <View style={[wishStyles.bar, {width: "50%"}]}></View>
-                <Text style={wishStyles.barTxt}>50%</Text>
-              </View>
-              <Text style={wishStyles.smallTxt}>$5/$10 saved</Text>
-            </Card>
-          </TouchableOpacity>
-
-          <TouchableOpacity>
-            <Card containerStyle={wishStyles.wishOuter} wrapperStyle={wishStyles.wishInner}>
-              <Card.Image source={require('./assets/pizza.png')} style={wishStyles.icons}></Card.Image>
-              <Card.Title style={wishStyles.wishTitle}>Pizza Delivery</Card.Title>
-              <View style={wishStyles.progressBar}>
-                <View style={[wishStyles.bar, {width: "92%"}]}></View>
-                <Text style={wishStyles.barTxt}>92%</Text>
-              </View>
-              <Text style={wishStyles.smallTxt}>$13/$14 saved</Text>
-            </Card>
+      <Overlay isVisible={visible}>
+        <View style={wishStyles.addOverlay}>
+          {/* <Text style={[wishStyles.title, wishStyles.save]}>Save</Text> */}
+          <Image source={require('./assets/piggy-bank.png')} style={wishStyles.addIcon}/>
+          <TextInput style={wishStyles.input} placeholder="$ amount to save"/>
+          <TouchableOpacity onPress={toggleOverlay}>
+            <View style={wishStyles.saveBtn}>
+              <Text style={wishStyles.saveTxt}>Save</Text>
+            </View>
           </TouchableOpacity>
         </View>
+      </Overlay>
+
+      <View style={wishStyles.wishes}>
+        {/* <Wish saved="10" total="90" img="./assets/game-console.png"></Wish> */}
+        <TouchableOpacity onPress={toggleOverlay}>
+        {/* <TouchableOpacity> */}
+          <Card containerStyle={wishStyles.wishOuter} wrapperStyle={wishStyles.wishInner}>
+            <Card.Image source={require('./assets/game-console.png')} style={wishStyles.icons}></Card.Image>
+            <Card.Title style={wishStyles.wishTitle}>Animal Crossing</Card.Title>
+            <View style={wishStyles.progressBar}>
+              <View style={[wishStyles.bar, {width: "22%"}]}></View>
+              <Text style={wishStyles.barTxt}>22%</Text>
+            </View>
+            <Text style={wishStyles.smallTxt}>$20/$90 saved</Text>
+          </Card>
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <Card containerStyle={wishStyles.wishOuter} wrapperStyle={wishStyles.wishInner}>
+            <Card.Image source={require('./assets/sneakers.png')} style={wishStyles.icons}></Card.Image>
+            <Card.Title style={wishStyles.wishTitle}>New Sneakers</Card.Title>
+            <View style={wishStyles.progressBar}>
+              <View style={[wishStyles.bar, {width: "35%"}]}></View>
+              <Text style={wishStyles.barTxt}>35%</Text>
+            </View>
+            <Text style={wishStyles.smallTxt}>$35/$100 saved</Text>
+          </Card>
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <Card containerStyle={wishStyles.wishOuter} wrapperStyle={wishStyles.wishInner}>
+            <Card.Image source={require('./assets/movie.png')} style={wishStyles.icons}></Card.Image>
+            <Card.Title style={wishStyles.wishTitle}>Movie Ticket</Card.Title>
+            <View style={wishStyles.progressBar}>
+              <View style={[wishStyles.bar, {width: "50%"}]}></View>
+              <Text style={wishStyles.barTxt}>50%</Text>
+            </View>
+            <Text style={wishStyles.smallTxt}>$5/$10 saved</Text>
+          </Card>
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <Card containerStyle={wishStyles.wishOuter} wrapperStyle={wishStyles.wishInner}>
+            <Card.Image source={require('./assets/pizza.png')} style={wishStyles.icons}></Card.Image>
+            <Card.Title style={wishStyles.wishTitle}>Pizza Delivery</Card.Title>
+            <View style={wishStyles.progressBar}>
+              <View style={[wishStyles.bar, {width: "92%"}]}></View>
+              <Text style={wishStyles.barTxt}>92%</Text>
+            </View>
+            <Text style={wishStyles.smallTxt}>$13/$14 saved</Text>
+          </Card>
+        </TouchableOpacity>
+      </View>
 
       <View style={wishStyles.btmContainer}>
         <TouchableOpacity>
