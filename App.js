@@ -1,8 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import { Card } from 'react-native-elements';
 
 const styles = StyleSheet.create({
   button: {
@@ -37,6 +37,49 @@ const wishStyles = StyleSheet.create({
   icon: {
     width: 60,
     height: 60
+  },
+  icons: {
+    width: 90,
+    height: 90
+  },
+  wishes: {
+    // alignItems:
+  },
+  wishOuter: {
+    width: 150,
+    borderRadius: 5,
+    shadowColor: "#000",
+    shadowOpacity: 0.2,
+    shadowRadius: 3, 
+    alignItems: "center"
+  },
+  wishInner: {
+    alignItems: "center"
+  },
+  wishTitle: {
+    fontSize: 20
+  },
+  progressBar: {
+    height: 22,
+    width: 110,
+    borderColor: '#43484d',
+    borderWidth: 1.75,
+    borderRadius: 10,
+    flexDirection: "row",
+    justifyContent: "center"
+  },
+  bar: {
+    position: 'absolute',
+    left: 0, 
+    right: 0,
+    top: 0,
+    bottom: 0,
+    borderRadius: 10,
+    backgroundColor: "#8BED4F",
+    width: "50%"
+  },
+  barTxt: {
+    zIndex: 99
   }
 });
 
@@ -69,8 +112,16 @@ function WishListScreen() {
         <Text style={wishStyles.title}>Wish List</Text>
         <Image source={require('./assets/magic-wand.png')} style={wishStyles.icon}/>
       </View>
-      <View>
-        
+      <View style={wishStyles.wishes}>
+        <Card containerStyle={wishStyles.wishOuter} wrapperStyle={wishStyles.wishInner}>
+          <Card.Image source={require('./assets/game-console.png')} style={wishStyles.icons}></Card.Image>
+          <Card.Divider/>
+          <Card.Title style={wishStyles.wishTitle}>Animal Crossing</Card.Title>
+          <View style={wishStyles.progressBar}>
+            <View style={wishStyles.bar}></View>
+            <Text style={wishStyles.barTxt}>50%</Text>
+          </View>
+        </Card>
       </View>
     </View>
   );

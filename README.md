@@ -1,10 +1,13 @@
 # Wish-List-SheHacks
 
 # Attributions
-Wish List Icon
+Wish List Icons
 --------------
-https://www.flaticon.com/free-icon/wishlist_1077873?term=wishlist&page=1&position=25&related_item_id=1077873
+https://www.flaticon.com/free-icon/magic-wand_3204021?term=magic&page=1&position=8&related_item_id=3204021
 Icons made by Freepik from www.flaticon.com
 
-https://www.flaticon.com/free-icon/magic-wand_3204021?term=magic&page=1&position=8&related_item_id=3204021
+https://www.flaticon.com/free-icon/game-console_2949874?term=game&page=1&position=44&related_item_id=2949874
+Icons made by Freepik from www.flaticon.com
+
+https://www.flaticon.com/free-icon/sneakers_1785348?term=shoes&page=1&position=9&related_item_id=1785348
 Icons made by Freepik from www.flaticon.com
