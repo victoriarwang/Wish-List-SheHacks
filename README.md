@@ -32,3 +32,6 @@ Icons made by Freepik from www.flaticon.com
 
 https://www.flaticon.com/free-icon/piggy-bank_584011?related_item_id=584093&term=money
 Icons made by Freepik from www.flaticon.com
+
+https://www.flaticon.com/free-icon/add-image_3159338?term=add%20picture&page=1&position=7&related_item_id=3159338
+Icons made by Freepik from www.flaticon.com

@@ -170,6 +170,15 @@ const wishStyles = StyleSheet.create({
     marginBottom: 25,
     fontSize: 30
   },
+  nameInput: {
+    marginTop: 5,
+    fontSize: 25
+  },
+  amountInput: {
+    marginTop: 5,
+    marginBottom: 25,
+    fontSize: 25
+  },
   saveBtn: {
     width: 70,
     height: 30,
@@ -185,7 +194,6 @@ const wishStyles = StyleSheet.create({
 
 function HomeScreen({ navigation }) {
   return (
-    
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 10 }}>
       <Text>Home Screen</Text>
       <Button
@@ -203,11 +211,14 @@ function HomeScreen({ navigation }) {
 
 // wish list code
 function WishListScreen() {
-  const [visible, setVisible] = useState(false);
-  const [value, onChangeText] = React.useState('Amount');
+  const [sVisible, sSetVisible] = useState(false);
+  const [wVisible, wSetVisible] = useState(false);
 
-  const toggleOverlay = () => {
-    setVisible(!visible);
+  const sToggleOverlay = () => {
+    sSetVisible(!sVisible);
+  };
+  const wToggleOverlay = () => {
+    wSetVisible(!wVisible);
   };
 
   return (
@@ -217,12 +228,12 @@ function WishListScreen() {
         <Image source={require('./assets/magic-wand.png')} style={wishStyles.icon}/>
       </View>
 
-      <Overlay isVisible={visible}>
+      <Overlay isVisible={sVisible}>
         <View style={wishStyles.addOverlay}>
           {/* <Text style={[wishStyles.title, wishStyles.save]}>Save</Text> */}
           <Image source={require('./assets/piggy-bank.png')} style={wishStyles.addIcon}/>
           <TextInput style={wishStyles.input} placeholder="$ amount to save"/>
-          <TouchableOpacity onPress={toggleOverlay}>
+          <TouchableOpacity onPress={sToggleOverlay}>
             <View style={wishStyles.saveBtn}>
               <Text style={wishStyles.saveTxt}>Save</Text>
             </View>
@@ -230,9 +241,24 @@ function WishListScreen() {
         </View>
       </Overlay>
 
+      <Overlay isVisible={wVisible}>
+        <View style={wishStyles.addOverlay}>
+          <TouchableOpacity>
+            <Image source={require('./assets/add-image.png')} style={wishStyles.addIcon}/>
+          </TouchableOpacity>
+          <TextInput style={wishStyles.nameInput} placeholder="item name"/>
+          <TextInput style={wishStyles.amountInput} placeholder="$ amount needed"/>
+          <TouchableOpacity onPress={wToggleOverlay}>
+            <View style={wishStyles.saveBtn}>
+              <Text style={wishStyles.saveTxt}>Add</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </Overlay>
+
       <View style={wishStyles.wishes}>
         {/* <Wish saved="10" total="90" img="./assets/game-console.png"></Wish> */}
-        <TouchableOpacity onPress={toggleOverlay}>
+        <TouchableOpacity onPress={sToggleOverlay}>
         {/* <TouchableOpacity> */}
           <Card containerStyle={wishStyles.wishOuter} wrapperStyle={wishStyles.wishInner}>
             <Card.Image source={require('./assets/game-console.png')} style={wishStyles.icons}></Card.Image>
@@ -245,7 +271,7 @@ function WishListScreen() {
           </Card>
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={sToggleOverlay}>
           <Card containerStyle={wishStyles.wishOuter} wrapperStyle={wishStyles.wishInner}>
             <Card.Image source={require('./assets/sneakers.png')} style={wishStyles.icons}></Card.Image>
             <Card.Title style={wishStyles.wishTitle}>New Sneakers</Card.Title>
@@ -257,7 +283,7 @@ function WishListScreen() {
           </Card>
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={sToggleOverlay}>
           <Card containerStyle={wishStyles.wishOuter} wrapperStyle={wishStyles.wishInner}>
             <Card.Image source={require('./assets/movie.png')} style={wishStyles.icons}></Card.Image>
             <Card.Title style={wishStyles.wishTitle}>Movie Ticket</Card.Title>
@@ -269,7 +295,7 @@ function WishListScreen() {
           </Card>
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={sToggleOverlay}>
           <Card containerStyle={wishStyles.wishOuter} wrapperStyle={wishStyles.wishInner}>
             <Card.Image source={require('./assets/pizza.png')} style={wishStyles.icons}></Card.Image>
             <Card.Title style={wishStyles.wishTitle}>Pizza Delivery</Card.Title>
@@ -283,7 +309,7 @@ function WishListScreen() {
       </View>
 
       <View style={wishStyles.btmContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={wToggleOverlay}>
           <Image source={require('./assets/wish-icon.png')} style={wishStyles.addIcon}/>
         </TouchableOpacity>
       </View>
