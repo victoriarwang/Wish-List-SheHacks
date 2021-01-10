@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
     marginLeft: 280, marginTop: 25,
   },
   logo: {
-    width: 180, height: 180, 
-    left: 10, top: 0,
+    width: 150, height: 150, 
+    left: 20, top: 0,
   },
   welcomeEmma: {
     fontFamily: 'Verdana',
@@ -46,11 +46,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   balance: {
-    color: 'white',
-    fontSize: 25,
+    color: '#fff',
+    fontSize: 23,
     fontWeight: 'bold',
-    marginTop: -540,
-    marginLeft: -40,
+    marginTop: 260,
+    paddingRight: 15,
     position: 'absolute',
   },
   currentBalance: {
@@ -58,8 +58,8 @@ const styles = StyleSheet.create({
     color: '#698eae',
     fontWeight: 'bold',
     fontSize: 24,
-    marginTop: -120,
-    marginLeft: -100,
+    marginTop: 30,
+    marginLeft: 15,
     position: 'absolute',
   },
   buttonGPlusStyle: {
@@ -78,13 +78,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#157045',
     borderWidth: 0.5,
     borderColor: '#fff',
-    height: 65,
+    height: 55,
     borderRadius: 10,
     margin: 5,
-    marginTop: -60,
+    marginTop: -70,
   },
   button2: {
-    marginTop: -40
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#157045',
+    borderWidth: 0.5,
+    borderColor: '#fff',
+    height: 55,
+    borderRadius: 10,
+    margin: 5,
+    marginTop: 0,
   },
   buttonImageIconStyle: {
     padding: 20,
@@ -104,7 +112,7 @@ const styles = StyleSheet.create({
   buttonIconSeparatorStyle: {
     backgroundColor: '#fff',
     width: 2,
-    height: 80,
+    height: 55,
   },
   circle: {
     marginTop: -70,
@@ -454,49 +462,41 @@ function HomeScreen({ navigation }) {
         <Text style={styles.welcomeEmma}>
           WELCOME EMMA!
         </Text>
-      </View>
-      <View style={styles.container}>
         <Image
           style={styles.logo}
           source={require('./assets/piggybank.png')}
         />
-      </View>
-      <View><Text style={styles.currentBalance}>Current Balance</Text></View>
+        <Text style={styles.currentBalance}>Current Balance</Text></View>
+        <Text style={styles.balance}>$70.00</Text>
+        <View style={{flex: 0.3}}/>
 
-      <View style={styles.container}>
         <TouchableOpacity onPress={() => navigation.navigate('WishList')}
           style={styles.button}
           activeOpacity={0.5}>
-
           <Text style={styles.buttonTextStyle}>
             Wish List
           </Text>
           <View style={styles.buttonIconSeparatorStyle} />
-
           <Image
             source={require('./assets/wishlist.png')}
             style={styles.buttonImageIconStyle}
           />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Tasks')}
-          style={[styles.button, styles.button2]}
+          style={styles.button2}
           activeOpacity={0.5}>
-
           <Text style={styles.buttonTextStyle}>
             Tasks
           </Text>
           <View style={styles.buttonIconSeparatorStyle} />
-
           <Image
             source={require('./assets/save.png')}
             style={styles.buttonImageIconStyle}
           />
         </TouchableOpacity>
-      </View>
-      <View>
-        <Text style={styles.balance}>$70.00</Text>
-      </View>
+
       <SafeAreaView style={styles.navbar}>
+
       <View style={styles.circle}>
         <TouchableOpacity
           style={styles.loginScreenButton}
@@ -505,11 +505,9 @@ function HomeScreen({ navigation }) {
             
         </TouchableOpacity>
         
-      
         <Text style={styles.savetext}>
           SAVE
         </Text>
-        
       </View>
 
       <View style={styles.left}>
@@ -520,36 +518,8 @@ function HomeScreen({ navigation }) {
         </TouchableOpacity>
         
       </View>
-
-      <View style={styles.right}>
-        <TouchableOpacity
-          style={styles.loginScreenButton}
-          onPress={() => console.log('pressed')}
-          underlayColor='#fff'>
-        </TouchableOpacity>
-      
-        <Text style={styles.sharetext}>
-          SHARE
-        </Text>
-      </View>
-      
-         
-      <Text style={styles.donatetext}>
-          SPEND
-        </Text>
       </SafeAreaView>
-      
-      <View>
-        <Image
-        style={styles.save}
-          source={require('./assets/save.png')}
-        />
-      </View>
-
-      
-      
       <StatusBar style="auto" />
-
     </SafeAreaView>
   );
 }
