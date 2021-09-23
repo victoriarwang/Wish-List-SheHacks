@@ -1,5 +1,6 @@
 # Wish-List-SheHacks
-
+Wish List: A mobile application developed in React Native with the goal of teaching kids how to manage their finances. 
+Top 20 Finalist at SheHacks 2021 🏆
 # Attributions
 Wish List Icons
 --------------
